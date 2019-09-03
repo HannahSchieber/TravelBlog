@@ -1,0 +1,85 @@
+<div class="card">
+  <div class="card-header" [ngClass]="entry.author_id == userId ? 'owner' : ''">
+    <div class="row">
+      <div class="col-md">
+        <app-entry-header [isEditing]="isEditing" [author]="entry.author"
+                          [title]="entry.title" (titleChange)="entry.title = $event"
+                          [entryDate]="entry.date" ></app-entry-header>
+      </div>
+
+      <ng-container *ngIf="entry.author_id === userId">
+        <ng-container *ngIf="!isEditing">
+          <div class="col-md-1">
+            <button class="btn btn-sm" (click)="editing()">
+              <span class="fas fa-edit"></span>
+            </button>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="isEditing">
+          <div class="col-md-1">
+            <button class="btn btn-sm" (click)="openModal(removeEntry)">
+              <span class="fas fa-trash-alt"></span>
+            </button>
+          </div>
+          <div class="col-md-1">
+            <button class="btn btn-sm" (click)="save()">
+              <span class="fas fa-save"></span>
+            </button>
+          </div>
+          <div class="col-md-1">
+            <button class="btn btn-sm" (click)="editing()">
+              <span class="fas fa-times-circle"></span>
+            </button>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-3">
+        <img src={{entry.image}}>
+      </div>
+      <div class="col-md">
+        <p *ngIf="!isEditing">
+          {{entry.text}}
+        </p>
+        <textarea *ngIf="isEditing" name="text" [(ngModel)]="editingEntry.text" #text="ngModel"></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer" [ngClass]="entry.author_id == userId ? 'owner' : ''">
+    <div class="row">
+      <div class="col-md">
+        <app-travel-tags [travelTags]="entry.tags"></app-travel-tags>
+      </div>
+      <div class="col-md-3" *ngIf="isEditing">
+        <app-new-travel-tags (newTravelTag)="addTravelTag($event)"></app-new-travel-tags>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #removeEntry let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4>Edit User:</h4>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-md-12">Do you really want to remove this entry?</div>
+
+    </div>
+    <br>
+
+  </div>
+  <div class="modal-footer">
+    <div class="row">
+      <div class="col-md">
+        <button class="btn btn-block btn-danger" (click)="this.modalRef.hide()">No</button>
+      </div>
+      <div class="col-md">
+        <button class="btn btn-block btn-primary" (click)="delete()">Yes</button>
+      </div>
+    </div>
+  </div>
+</ng-template>

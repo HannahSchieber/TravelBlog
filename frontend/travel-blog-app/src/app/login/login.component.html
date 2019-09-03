@@ -1,0 +1,78 @@
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+
+      <div class="row">
+        <div class="col">
+          <h1>Login</h1>
+        </div>
+      </div>
+      <form>
+        <ng-container *ngIf="!isLogin">
+          <div class="row">
+            <div class="col-md">E-Mail</div>
+            <div class="col-md">
+              <input type="email" class="form-control" placeholder="E-Mail"
+                     name="email" [(ngModel)]="user.email" #email="ngModel" autocomplete>
+            </div>
+          </div>
+        </ng-container>
+        <div class="row">
+          <div class="col-md">Username</div>
+          <div class="col-md">
+            <input type="text" class="form-control" placeholder="Username"
+                   name="username" [(ngModel)]="user.username" #username="ngModel">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md">Password</div>
+          <div class="col-md">
+            <input type="password" class="form-control" placeholder="Password"
+                   name="password" [(ngModel)]="user.password" #password="ngModel" autocomplete>
+          </div>
+        </div>
+        <ng-container *ngIf="!isLogin">
+          <div class="row">
+            <div class="col-md">Password again</div>
+            <div class="col-md">
+              <input type="password" class="form-control" placeholder="Password again"
+                     name="passwordAgain" [(ngModel)]="user.passwordAgain" #passwordAgain="ngModel" autocomplete>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md">Mobil Number</div>
+            <div class="col-md">
+              <input type="text" class="form-control" placeholder="Mobil Number"
+                     name="phonenumber" [(ngModel)]="user.phonenumber" #phonenumber="ngModel" autocomplete>
+            </div>
+          </div>
+        </ng-container>
+
+        <div class="row" *ngIf="isLogin">
+          <div class="col-md">
+            <button class="btn btn-block btn-primary" (click)="register()">
+              <span class="fas fa-user-plus"></span>
+              Register</button>
+          </div>
+          <div class="col-md">
+            <button class="btn btn-block btn-primary" (click)="login()">
+              <span class="fas fa-sign-in-alt"></span>
+              Login</button>
+          </div>
+        </div>
+        <div class="row" *ngIf="!isLogin">
+          <div class="col-md">
+            <button class="btn btn-block btn-primary" (click)="login()">
+              <span class="fas fa-sign-in-alt"></span>
+              Login</button>
+          </div>
+          <div class="col-md">
+            <button class="btn btn-block btn-primary" (click)="register()">
+              <span class="fas fa-user-plus"></span>
+              Register</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

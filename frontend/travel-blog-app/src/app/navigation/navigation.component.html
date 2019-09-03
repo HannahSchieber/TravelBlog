@@ -1,0 +1,76 @@
+<!--<nav class="mb-1 navbar navbar-expand-lg navbar-dark default-color">
+  <a class="navbar-brand" href="#">World Traveling</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
+          aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" *ngIf="token">
+    <ul class="navbar-nav ml-auto nav-flex-icons">
+      <li class="nav-item">
+        <a class="nav-link waves-effect waves-light" (click)="openModal(editUserTemplate)">
+          <span class="fas fa-user-cog"></span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link waves-effect waves-light" (click)="logout()">
+          <span class="fas  fa-sign-out-alt"></span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>-->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    World Traveling
+  </a>
+
+  <button class="navbar-toggler" type="button"
+          (click)="toggleNavbar()">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <div class="collapse navbar-collapse"
+       [ngClass]="{ 'show': navbarOpen }">
+    <ul class="navbar-nav ml-auto nav-flex-icons">
+      <li class="nav-item"  style="text-align: right;">
+        <a class="nav-link waves-effect waves-light" (click)="openModal(editUserTemplate)">
+          <span class="fas fa-user-cog"></span>
+        </a>
+      </li>
+
+      <li class="nav-item" style="text-align: right;">
+        <a class="nav-link waves-effect waves-light" (click)="logout()">
+          <span class="fas  fa-sign-out-alt"></span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<ng-template #editUserTemplate let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4>Edit User:</h4>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-md-6">New Password:</div>
+      <div class="col-md-6">
+        <input type="text" class="form-control" placeholder="New Password"
+               name="newPasswordInput" [(ngModel)]="newPassword" #newPasswordInput="ngModel" autocomplete>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-6">New Password again:</div>
+      <div class="col-md-6">
+        <input type="text" class="form-control" placeholder="New Password again"
+               name="newPWAgainInput" [(ngModel)]="newPasswordAgain" #newPWAgainInput="ngModel" autocomplete>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-block btn-primary">Save</button>
+  </div>
+</ng-template>

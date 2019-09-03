@@ -1,0 +1,22 @@
+<div class="container home">
+  <div class="row">
+    <div class="col-md">
+      <input type="text" class="form-control" placeholder="Search for Entry..."
+             name="searchTerm" [(ngModel)]="searchTerm">
+    </div>
+  </div>
+
+  <div class="row" style="margin-top: 20px;">
+    <div class="col-md">
+      <app-new-entry></app-new-entry>
+    </div>
+  </div>
+
+  <ng-container *ngFor="let elem of entries | filter: searchTerm">
+    <div class="row">
+      <div class="col-md-12">
+        <app-entry [entry]="elem"></app-entry>
+      </div>
+    </div>
+  </ng-container>
+</div>

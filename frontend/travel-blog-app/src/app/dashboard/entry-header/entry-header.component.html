@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-md">
+    <h5 *ngIf="!isEditing">{{title}}</h5>
+    <input type="text" class="form-control" *ngIf="isEditing"
+           [(ngModel)]="title" >
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-md">
+    <p class="entry-title">Author: {{author}}</p>
+    <p class="entry-title">Last updated: {{entryDate}}</p>
+  </div>
+</div>

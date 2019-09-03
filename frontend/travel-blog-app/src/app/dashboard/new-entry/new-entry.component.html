@@ -1,0 +1,40 @@
+<div class="card">
+  <div class="card-header" (click)="toggleEntry()">
+    <span class="fas" [ngClass]="isEditing? 'fa-angle-down' : 'fa-angle-right'" style="margin-right: 10px;"></span>
+    <span>Create New Post</span>
+  </div>
+  <ng-container *ngIf="isEditing">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md">
+          <input type="text" placeholder="Title" class="form-control"
+                 name="title" [(ngModel)]="newEntry.title" #title="ngModel">
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md">
+           <textarea name="text" [(ngModel)]="newEntry.text" #text="ngModel">
+           </textarea>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md">
+          {{newEntry.tags}}
+          <app-travel-tags [travelTags]="newEntry.tags">
+
+          </app-travel-tags>
+        </div>
+        <div class="col-md-3">
+          <app-new-travel-tags (newTravelTag)="addTravelTag($event)"></app-new-travel-tags>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <button (click)="createEntry()" class="btn btn-primary" style="float: right">
+        Create
+      </button>
+    </div>
+  </ng-container>
+</div>
