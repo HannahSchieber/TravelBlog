@@ -7,19 +7,23 @@ install node and npm
 
 ## Start Backend
 ``cd backend``
+
 ``python3 app.py``
 
 ## Start Frontend on Dev otherwise use production build
 Mac and Windows: (need to install ng and npm)
 `` ng s -o ``
+
 Ubuntu / Linux: 
-``npm start `` go to route  `` localhost:4200 ``
+``npm start `` go to route  
+    http://localhost:4200
 
 ## frameworks
 ### frontend
 - angular
 - bootstrap
-- fontawesome for icons ``https://fontawesome.com``
+- fontawesome for icons 
+      https://fontawesome.com
 ### backend
 - flask
 - swagger:
